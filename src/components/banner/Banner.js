@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../banner/Banner.css";
-import axios from "../../axios";
-import requests from "../../api/requests";
+import axios from "../../api/axios";
+import requests from "../../api/Requests";
 
 function Banner() {
   const [movie, setMovie] = useState([]);
@@ -27,16 +27,16 @@ function Banner() {
   return (
     <header className="banner" style={{
       backgroundSize: "cover",
-      backgroundImage: `url("https://i.pinimg.com/originals/62/cb/b8/62cbb8138fd6c38a72198e09859a5426.jpg")`,
+      backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
       backgroundPosition: "center center",
     }}>
       <div className="banner_contents">
-        <h1 className="banner_title">Movie Name</h1>
+        <h1 className="banner_title">{movie?.title || movie?.original_name}</h1>
         <div className="banner_buttons">
           <button className="banner_button">Play</button>
           <button className="banner_button">My List</button>
         </div>
-        <h1 className="banner_description">{truncate(`This is a description`, 150)}</h1>
+        <h1 className="banner_description">{truncate(movie?.overview, 150)}</h1>
       </div>
 
       <div className="banner--fadeBottom" />
