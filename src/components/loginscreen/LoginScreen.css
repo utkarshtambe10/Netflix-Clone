@@ -11,6 +11,7 @@
     width: 150px;
     object-fit: contain;
     padding-left: 20px;
+    cursor: pointer;
 }
 
 .loginScreen_button {
@@ -48,6 +49,8 @@
     z-index: 1;
     color: #fff;
     padding: 20px;
+    left: 0;
+    right: 0;
 }
 
 .loginScreen_body > h1 {
