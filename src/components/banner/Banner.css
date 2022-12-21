@@ -2,7 +2,7 @@
     position: relative;
     height: 448px;
     color: white;
-    object-fit: contian;
+    object-fit: contain;
 }
 
 .banner_contents {
