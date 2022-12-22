@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import HomeScreen from './components/homescreen/HomeScreen';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -10,6 +10,7 @@ import LoginScreen from './components/loginscreen/LoginScreen';
 import { auth } from './firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from './features/userSlice';
+import ProfileScreen from './components/profilescreen/ProfileScreen';
 
 function App() {
   const user = useSelector(selectUser);
@@ -21,28 +22,29 @@ function App() {
         //logged in
         dispatch(login({
           uid: userAuth.uid,
-          email: userAuth.email
+          email: userAuth.email,
         }));
       } else {
         //logged out
-        dispatch(logout);
+        dispatch(logout());
       }
     });
 
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">
-      <Router>
+      <BrowserRouter>
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
-            <Route exact path='/' element={<HomeScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/" element={<HomeScreen />} />
           </Routes>
         )}
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
