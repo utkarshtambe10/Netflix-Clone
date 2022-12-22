@@ -3,6 +3,7 @@
     height: 448px;
     color: white;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .banner_contents {

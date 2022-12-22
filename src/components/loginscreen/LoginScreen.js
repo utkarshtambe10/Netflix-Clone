@@ -30,7 +30,7 @@ function LoginScreen() {
             </div>
 
           </>
-        )};
+        )}
       </div>
     </div>
   );
